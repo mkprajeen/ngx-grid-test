@@ -1,4 +1,26 @@
- @import "~@swimlane/ngx-datatable/release/themes/material.css";
- @import "~@swimlane/ngx-datatable/release/themes/bootstrap.css";
- @import "~@swimlane/ngx-datatable/release/themes/dark.css";
- @import "~@swimlane/ngx-datatable/release/assets/icons.css";
+//  @import "~@swimlane/ngx-datatable/release/themes/material.css";
+//  @import "~@swimlane/ngx-datatable/release/themes/bootstrap.css";
+//  @import "~@swimlane/ngx-datatable/release/themes/dark.css";
+//  @import "~@swimlane/ngx-datatable/release/assets/icons.css";
+
+//  .ngx-datatable {
+//     overflow: visible;
+//   }
+.dropdown-toggle::after{
+    content:initial
+ }
+//  .datatable-body-cell {
+//     overflow-x: visible !important;
+//     overflow-y: visible !important;
+//  }
+//  .my-custom-cell {
+//     background: red;
+//  }
+//  .app-directory-view {
+//     overflow: visible;
+//     width: 500;
+//     height: 500;
+//   }
+
+
+ 

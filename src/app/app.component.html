@@ -3,91 +3,47 @@
   <h1>
     Welcome to {{ title }}!
   </h1>
-  <ul class="nav navbar-nav navbar-right">
-    <li class="dropdown" id="menu2">
-      <a class="dropdown-toggle" data-toggle="dropdown" href="#menu2">
-        Register
-        <!-- <b class="caret"></b> -->
-      </a>
+
+    <div ngbDropdown class="btn-group" role="group">
+      <button class="btn-link" ngbDropdownToggle>register</button>
       <div class="dropdown-menu">
-        <form role="form" action="/user/create" method="post">
-          <fieldset id="menu4" class='textbox' style="width: ; padding:10px;">
-            <div class="form-group">
-              <label for="newNameInput">Name</label>
-              <input type="text" class="form-control" name="name" id="newName" placeholder="Name">
-            </div>
-            <div class="form-group">
-              <label for="newEmailInput">Email address</label>
-              <input type="text" class="form-control" name="email" id="newEmail" placeholder="Email">
-            </div>
-            <div class="form-group">
-              <label for="newPasswordInput">Password</label>
-              <input type="password" class="form-control" name="password" id="newPassword" placeholder="Password">
-            </div>
-            <li class="divider"></li>
-            <input class="btn btn-primary" style="clear: left; width: 100%; height: 32px; font-size: 13px;" value="Sign Up" id="signup"
-              type="submit" />
-          </fieldset>
-        </form>
+        <button class="dropdown-item">Custom activity...</button>
+        <div class="dropdown-divider"></div>
+        <button class="dropdown-item">Custom activity...</button>
+        <button class="dropdown-item">Future presence...</button>
+        <button class="dropdown-item">No end time</button>
       </div>
-    </li>
-  </ul>
+    </div>
+
+  <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
+    <button class="btn btn-link" ngbDropdownToggle>Drop me</button>
+    <div class="dropdown-menu" ngbDropdownMenu role="menu">
+      <button class="dropdown-item">One</button>
+      <button class="dropdown-item">Two</button>
+      <button class="dropdown-item">Four!</button>
+    </div>
+  </div>
+
+  <div class="btn-group">
+    <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">menu</button>
+    <ul class="dropdown-menu" role="menu">
+      <li> <a href="#">one</a> </li>
+      <li> <a href="#">two</a> </li>
+      <li> <a href="#">three</a> </li>
+    </ul>
+  </div>
+
 </div>
 <h2>NGX- Datagrid </h2>
-<div class="container">
-  <ngx-datatable #tblforms class="material" [rows]="queueList" [columnMode]="'force'" [headerHeight]="40" [footerHeight]="40"
-    [rowHeight]="'auto'" [limit]="10">
 
-    <ngx-datatable-column>
-      <ng-template let-column="column" ngx-datatable-header-template a>
-        remoteCallId
-      </ng-template>
-      <ng-template let-row="row" ngx-datatable-cell-template>
-        {{row.remoteCallId}}
-      </ng-template>
-    </ngx-datatable-column>
-    <ngx-datatable-column>
-      <ng-template let-column="column" ngx-datatable-header-template a>
-        calledName
-      </ng-template>
-      <ng-template let-row="row" ngx-datatable-cell-template>
-        <div class="dropdown-sample-link">
-          <div ngbDropdown class="d-inline-block">
-            <button class="btn-link" ngbDropdownToggle>{{row.calledName}}</button>
-            <div class="dropdown-menu">
-              <div *ngFor="let item of getStatus1()">
-                <button class="dropdown-item">{{ item.id }}-{{ item.val }}</button>
-              </div>
-              <div class="dropdown-divider"></div>
-              <button class="dropdown-item">Custom activity...</button>
-              <button class="dropdown-item">Future presence...</button>
-              <button class="dropdown-item">No end time</button>
-            </div>
+<div>
+  <div class="app-directory-view">
+    <app-directory-view class="app-directory-view" >Loading</app-directory-view>
+  </div>
+  <div>
+    <app-ab-view >Loading</app-ab-view>
+  </div>
 
-          </div>
-        </div>
-      </ng-template>
-    </ngx-datatable-column>
-    <ngx-datatable-column>
-      <ng-template let-column="column" ngx-datatable-header-template a>
-        stateName
-      </ng-template>
-      <ng-template let-row="row" ngx-datatable-cell-template>
-        {{row.stateName}}
-      </ng-template>
-    </ngx-datatable-column>
-    <ngx-datatable-column>
-      <ng-template let-column="column" ngx-datatable-header-template>
-        Download
-      </ng-template>
-      <ng-template let-row="row" ngx-datatable-cell-template>
-        <a style="cursor: pointer;" (click)="onDownload(row)">
-          <i class="fa fa-download" data-toggle="tooltip" data-placement="top" title="Allow popup to view/download file."></i>
-        </a>
-      </ng-template>
-    </ngx-datatable-column>
-
-  </ngx-datatable>
 </div>
 
 <router-outlet> </router-outlet>

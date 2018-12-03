@@ -1,0 +1,20 @@
+
+
+.ngx-datatable {
+    overflow: visible;
+  }
+.dropdown-toggle::after{
+    content:initial
+ }
+ .datatable-body-cell {
+    overflow-x: visible !important;
+    overflow-y: visible !important;
+ }
+ .my-custom-cell {
+    background: red;
+ }
+//  .app-directory-view {
+//     overflow: visible;
+//     width: 500;
+//     height: 500;
+//   }

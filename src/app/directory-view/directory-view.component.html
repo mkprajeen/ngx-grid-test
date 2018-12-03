@@ -1,0 +1,67 @@
+<ngx-datatable class="material" [rows]="queueList" [columnMode]="'force'" [headerHeight]="40" [footerHeight]="40" [rowHeight]="'auto'"
+  [limit]="5">
+
+  <ngx-datatable-column>
+    <ng-template let-column="column" ngx-datatable-header-template>
+      remoteCallId
+    </ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      {{row.remoteCallId}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column >
+    <ng-template let-column="column" ngx-datatable-header-template>
+      calledName
+    </ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      <div ngbDropdown class="d-inline-block">
+        <button class="btn-link" ngbDropdownToggle>{{row.calledName}}</button>
+        <div class="dropdown-menu" role="menu">
+          <div *ngFor="let item of getStatus1()">
+            <button class="dropdown-item">{{ item.id }}-{{ item.val }}</button>
+          </div>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item">Custom activity...</button>
+          <button class="dropdown-item">Future presence...</button>
+          <button class="dropdown-item">No end time</button>
+        </div>
+      </div>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column [cellClass]="'my-custom-cell'">
+    <ng-template let-column="column" ngx-datatable-header-template>
+      stateName
+    </ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      <!-- {{row.stateName}} -->
+      <div class="btn-group">
+        <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">{{row.stateName}}</button>
+        <div class="dropdown-menu" role="menu">
+          <div *ngFor="let item of getStatus1()">
+            <button class="dropdown-item">{{ item.id }}-{{ item.val }}</button>
+          </div>
+          <div class="dropdown-divider"></div>
+          <button class="dropdown-item">Custom activity...</button>
+          <button class="dropdown-item">Future presence...</button>
+          <button class="dropdown-item">No end time</button> 
+        </div>
+      </div>
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column name="isRecall">
+    <ng-template ngx-datatable-cell-template let-value="value">
+      {{value}}
+    </ng-template>
+  </ngx-datatable-column>
+  <ngx-datatable-column>
+    <ng-template let-column="column" ngx-datatable-header-template>
+      Download
+    </ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+      <a style="cursor: pointer;" (click)="onDownload(row)">
+        <i class="fa fa-download" data-toggle="tooltip" data-placement="top" title="download file."></i>
+      </a>
+    </ng-template>
+  </ngx-datatable-column>
+
+</ngx-datatable>
