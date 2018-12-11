@@ -1,4 +1,4 @@
-import { Component, ViewEncapsulation } from '@angular/core';
+import { Component, ViewEncapsulation, ViewChild, ElementRef } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +8,16 @@ import { Component, ViewEncapsulation } from '@angular/core';
 })
 export class AppComponent {
   title = 'ngx-grid-test';
-
+  @ViewChild('midropdown2') tpl: ElementRef;
   ngOnInit() {
+  }
+
+  divclick() {
+    this.tpl.nativeElement.click()
+    console.log(this.tpl.nativeElement);
+
+  }
+  divclick1() {
+    //alert('test');
   }
 }

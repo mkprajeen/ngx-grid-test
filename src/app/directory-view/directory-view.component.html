@@ -1,6 +1,6 @@
-<ngx-datatable class="material" [rows]="queueList" [columnMode]="'force'" [headerHeight]="40" [footerHeight]="40" [rowHeight]="'auto'"
+<ngx-datatable class="material" [rows]="queueList" [columnMode]="'force'" [headerHeight]="40" [footerHeight]="40" [rowHeight]="'60'"
   [limit]="5">
-
+  
   <ngx-datatable-column>
     <ng-template let-column="column" ngx-datatable-header-template>
       remoteCallId
@@ -28,13 +28,13 @@
       </div>
     </ng-template>
   </ngx-datatable-column>
-  <ngx-datatable-column [cellClass]="'my-custom-cell'">
+  <ngx-datatable-column >
     <ng-template let-column="column" ngx-datatable-header-template>
       stateName
     </ng-template>
     <ng-template let-row="row" ngx-datatable-cell-template>
       <!-- {{row.stateName}} -->
-      <div class="btn-group">
+      <!-- <div class="btn-group">
         <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">{{row.stateName}}</button>
         <div class="dropdown-menu" role="menu">
           <div *ngFor="let item of getStatus1()">
@@ -45,12 +45,25 @@
           <button class="dropdown-item">Future presence...</button>
           <button class="dropdown-item">No end time</button> 
         </div>
-      </div>
+      </div> -->
+      <ng-select  style="cursor: pointer" [items]="status_pair"
+                   bindLabel="val"
+                   appendTo="body"
+                   [clearable] = "false"
+                   placeholder="Select city"
+                   [(ngModel)]="value">
+      </ng-select>
     </ng-template>
   </ngx-datatable-column>
-  <ngx-datatable-column name="isRecall">
+  <ngx-datatable-column name="isRecall" [cellClass]="'my-custom-cell'">
     <ng-template ngx-datatable-cell-template let-value="value">
-      {{value}}
+      <!-- {{value}} -->
+      <!-- <ng-select style=" overflow: visible;" [items]="status_pair"
+                   bindLabel="val"
+                   placeholder="Select city"
+                   [(ngModel)]="value">
+        </ng-select> -->
+        <mi-dropdown>loading..</mi-dropdown>
     </ng-template>
   </ngx-datatable-column>
   <ngx-datatable-column>

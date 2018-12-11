@@ -1,0 +1,19 @@
+<div class="my-custom-drop">
+  <a class="my-custom-drop dropdown" (click)="divclick(midropdown)" >menu</a>
+  <select id="midropdown"  style="position: absolute; clip:rect(2px 49px 19px 2px); z-index:2;" #midropdown1 >
+      <option *ngFor="let item of status_pair"
+      [value]="item.id">{{item.val}}</option>
+      <option style="font-size: 5pt; background-color: #000000;" disabled>&nbsp;</option>
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+      <option value="mercedes">Mercedes test123</option>
+      <option value="audi">Audi</option>
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+      <option value="mercedes">Mercedes test123</option>
+      <option value="audi">Audi</option>
+      <option value="volvo">Volvo</option>
+      <option value="saab">Saab</option>
+      <option value="mercedes">Mercedes test123</option>
+    </select>
+</div>

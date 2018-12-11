@@ -11,13 +11,15 @@ import { FormsModule} from '@angular/forms';
 
 
 import { AbViewComponent } from './ab-view/ab-view.component';
-import { DirectoryViewComponent } from './directory-view/directory-view.component'
+import { DirectoryViewComponent } from './directory-view/directory-view.component';
+import { MiDropdownComponent } from './mi-dropdown/mi-dropdown.component'
 
 @NgModule({
   declarations: [
     AppComponent,
     AbViewComponent,
-    DirectoryViewComponent
+    DirectoryViewComponent,
+    MiDropdownComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@
  @import "~@swimlane/ngx-datatable/release/themes/bootstrap.css";
  @import "~@swimlane/ngx-datatable/release/themes/dark.css";
  @import "~@swimlane/ngx-datatable/release/assets/icons.css";
+ @import "~@ng-select/ng-select/themes/default.theme.css";
 
 //  .ngx-datatable {
 //     overflow: visible;
@@ -15,10 +16,10 @@
 //     overflow-x: visible !important;
 //     overflow-y: visible !important;
 //  }
- .my-custom-cell {
-    //background: red;
-    overflow-x: visible !important;
- }
+//  .my-custom-cell {
+//     //background: red;
+//     overflow-x: visible !important;
+//  }
  .app-directory-view {
     overflow: visible;
     width: 500;

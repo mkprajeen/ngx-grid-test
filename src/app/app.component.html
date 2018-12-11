@@ -4,16 +4,16 @@
     Welcome to {{ title }}!
   </h1>
 
-    <div ngbDropdown class="btn-group" role="group">
-      <button class="btn-link" ngbDropdownToggle>register</button>
-      <div class="dropdown-menu">
-        <button class="dropdown-item">Custom activity...</button>
-        <div class="dropdown-divider"></div>
-        <button class="dropdown-item">Custom activity...</button>
-        <button class="dropdown-item">Future presence...</button>
-        <button class="dropdown-item">No end time</button>
-      </div>
+  <div ngbDropdown class="btn-group" role="group">
+    <button class="btn-link" ngbDropdownToggle>register</button>
+    <div class="dropdown-menu">
+      <button class="dropdown-item">Custom activity...</button>
+      <div class="dropdown-divider"></div>
+      <button class="dropdown-item">Custom activity...</button>
+      <button class="dropdown-item">Future presence...</button>
+      <button class="dropdown-item">No end time</button>
     </div>
+  </div>
 
   <div class="btn-group" ngbDropdown role="group" aria-label="Button group with nested dropdown">
     <button class="btn btn-link" ngbDropdownToggle>Drop me</button>
@@ -27,21 +27,42 @@
   <div class="btn-group">
     <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">menu</button>
     <ul class="dropdown-menu" role="menu">
-      <li> <a href="#">one</a> </li>
-      <li> <a href="#">two</a> </li>
-      <li> <a href="#">three</a> </li>
+      <li>
+        <a href="#">one</a>
+      </li>
+      <li>
+        <a href="#">two</a>
+      </li>
+      <li>
+        <a href="#">three</a>
+      </li>
     </ul>
   </div>
 
 </div>
-<h2>NGX- Datagrid </h2>
+
+<!-- <div class="my-custom-cell" style="display:flex;align-items:center; justify-content:flex-start;background: blue">
+  
+  <select style="position: absolute;">
+    <option>osdfsdfsdfsdfsdfsdfsdfsdfsd1</option>
+    <option>o2</option>
+  </select>
+  <select style="position: absolute;">
+      <option>test</option>
+      <option>o2</option>
+    </select>
+<button>tt</button>
+</div> -->
 
 <div>
+  <h2>NGX- Datagrid </h2>
+</div>
+<div>
   <div class="app-directory-view">
-    <app-directory-view class="app-directory-view" >Loading</app-directory-view>
+    <app-directory-view class="app-directory-view">Loading</app-directory-view>
   </div>
   <div>
-    <app-ab-view >Loading</app-ab-view>
+    <app-ab-view>Loading</app-ab-view>
   </div>
 
 </div>
