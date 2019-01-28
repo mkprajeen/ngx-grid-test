@@ -1,4 +1,4 @@
-<div class="my-custom-drop">
+<!-- <div class="my-custom-drop">
   <a class="my-custom-drop dropdown" (click)="divclick(midropdown)" >menu</a>
   <select id="midropdown"  style="position: absolute; clip:rect(2px 49px 19px 2px); z-index:2;" #midropdown1 >
       <option *ngFor="let item of status_pair"
@@ -16,4 +16,17 @@
       <option value="saab">Saab</option>
       <option value="mercedes">Mercedes test123</option>
     </select>
+</div> -->
+<div>
+  <a style="cursor: pointer;" (click)= "select.open()">
+    <i class="fa fa-download" data-toggle="tooltip" data-placement="top" title="download file."></i>
+  </a>
+  <ng-select style="opacity:0 "  #select
+                   [items]="status_pair"
+                   bindLabel="val"
+                   [clearable] = "false"
+                   appendTo="body"
+                   [(ngModel)]="value">
+  </ng-select>
 </div>
+
