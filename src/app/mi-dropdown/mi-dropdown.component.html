@@ -17,16 +17,40 @@
       <option value="mercedes">Mercedes test123</option>
     </select>
 </div> -->
+
 <div>
-  <a style="cursor: pointer;" (click)= "select.open()">
+  <a style="cursor: pointer;" (click)= "openSelect(select)">
     <i class="fa fa-download" data-toggle="tooltip" data-placement="top" title="download file."></i>
   </a>
-  <ng-select style="opacity:0 "  #select
+  <ng-select  style="opacity:0;"  #select  
                    [items]="status_pair"
                    bindLabel="val"
                    [clearable] = "false"
                    appendTo="body"
                    [(ngModel)]="value">
+                   <ng-template  ng-option-tmp let-item="item">
+                     <div class="row">
+                     <div class="col">{{item.id}}</div> 
+                     <div class="col">{{item.val}}</div> 
+                     <div class="col"><i class="fa fa-download" ></i></div>   
+                    </div>                  
+                  </ng-template>
   </ng-select>
 </div>
+
+<!-- <p-overlayPanel #op>
+   <div>
+   <p>dgdfgdfg</p>
+   <p>dgdfgdfg</p>
+   <p>dgdfgdfg</p>
+   <p>dgdfgdfg</p>
+   <p>dgdfgdfg</p>
+   <p>dgdfgdfg</p>
+   <p>dgdfgdfg</p>
+
+   </div>
+</p-overlayPanel>
+
+<button type="text" pButton label="Basic" (click)="op.toggle($event)"></button> -->
+
 

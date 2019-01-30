@@ -1,6 +1,6 @@
 <ngx-datatable class="material" [rows]="queueList" [columnMode]="'force'" [headerHeight]="40" [footerHeight]="40" [rowHeight]="'60'"
   [limit]="5">
-  
+
   <ngx-datatable-column>
     <ng-template let-column="column" ngx-datatable-header-template>
       remoteCallId
@@ -9,7 +9,7 @@
       {{row.remoteCallId}}
     </ng-template>
   </ngx-datatable-column>
-  <ngx-datatable-column >
+  <ngx-datatable-column>
     <ng-template let-column="column" ngx-datatable-header-template>
       calledName
     </ng-template>
@@ -28,7 +28,7 @@
       </div>
     </ng-template>
   </ngx-datatable-column>
-  <ngx-datatable-column >
+  <ngx-datatable-column>
     <ng-template let-column="column" ngx-datatable-header-template>
       stateName
     </ng-template>
@@ -46,12 +46,8 @@
           <button class="dropdown-item">No end time</button> 
         </div>
       </div> -->
-      <ng-select  style="cursor: pointer" [items]="status_pair"
-                   bindLabel="val"
-                   appendTo="body"
-                   [clearable] = "false"
-                   placeholder="Select city"
-                   [(ngModel)]="value">
+      <ng-select style="cursor: pointer" [items]="status_pair" bindLabel="val" appendTo="body" [clearable]="false" placeholder="Select city"
+        [(ngModel)]="value">
       </ng-select>
     </ng-template>
   </ngx-datatable-column>
@@ -63,7 +59,16 @@
                    placeholder="Select city"
                    [(ngModel)]="value">
         </ng-select> -->
-        <mi-dropdown>loading..</mi-dropdown>
+      <div style="display:flex;align-items:flex-start; justify-content:flex-start;">
+          <a style="cursor: pointer;position: absolute" (click)="onDownload(row)">
+              <i class="fa fa-search" data-toggle="tooltip" data-placement="top" title="download file."></i>
+           </a>
+      <mi-dropdown style="position:absolute;margin-left: 20px">loading..</mi-dropdown>
+      <mi-dropdown style="position:absolute;;margin-left: 40px">loading..</mi-dropdown>
+        
+
+
+      </div>
     </ng-template>
   </ngx-datatable-column>
   <ngx-datatable-column>
@@ -71,10 +76,38 @@
       Download
     </ng-template>
     <ng-template let-row="row" ngx-datatable-cell-template>
-      <a style="cursor: pointer;" (click)="onDownload(row)">
+      <a style="cursor: pointer;" (click)="onDownload($event,op3)">
         <i class="fa fa-download" data-toggle="tooltip" data-placement="top" title="download file."></i>
       </a>
     </ng-template>
   </ngx-datatable-column>
 
 </ngx-datatable>
+<p-overlayPanel #op3>
+  <div>
+    <input #popupInput type="text" placeholder="Name" autofocus="true" >
+    <!-- <div>
+      <input type="text" placeholder="Name">
+    </div>
+    <div>
+      <input type="text" placeholder="Name">
+    </div>
+    <div>
+      <input type="text" placeholder="Name">
+    </div>
+    <div>
+      <input type="text" placeholder="Name" >
+    </div> -->
+    <ul >
+      <li> test1 </li>
+      <li> test1 </li>
+      <li> test1 </li>
+      <li> test1 </li>
+      <li> test1 </li>
+    </ul>
+
+    <!-- <ng-select #select tabindex="0" style=" overflow: visible;" [items]="status_pair" bindLabel="val" placeholder="Select city"
+      [(ngModel)]="value">
+    </ng-select> -->
+  </div>
+</p-overlayPanel>

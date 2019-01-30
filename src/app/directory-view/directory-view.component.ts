@@ -1,4 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, Renderer } from '@angular/core';
+import { OverlayPanel } from 'primeng/overlaypanel';
 
 @Component({
   selector: 'app-directory-view',
@@ -9,6 +10,7 @@ export class DirectoryViewComponent implements OnInit {
   queueList: QueueCall[] = [];
   status_pair: any[] = [{ id: 1, val: 'Available' }, { id: 2, val: 'Busy' }, { id: 3, val: 'Meeting' }, { id: 4, val: 'Vacation' }];
   strArry: string[] = ["Available", "Busy", "Meeting", "Vacation"];
+  @ViewChild('#popupInput') popupInput: ElementRef;
   constructor() { }
 
   ngOnInit() {
@@ -30,6 +32,11 @@ export class DirectoryViewComponent implements OnInit {
   }
   private getStatus1(): string[] {
     return this.status_pair;
+  }
+  private onDownload(event, overlaypanel: OverlayPanel) {
+    overlaypanel.toggle(event);
+
+
   }
 }
 export class QueueCall {
