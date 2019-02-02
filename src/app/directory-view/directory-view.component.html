@@ -59,15 +59,17 @@
                    placeholder="Select city"
                    [(ngModel)]="value">
         </ng-select> -->
-      <div style="display:flex;align-items:flex-start; justify-content:flex-start;">
-          <a style="cursor: pointer;position: absolute" (click)="onDownload(row)">
-              <i class="fa fa-search" data-toggle="tooltip" data-placement="top" title="download file."></i>
-           </a>
-      <mi-dropdown style="position:absolute;margin-left: 20px">loading..</mi-dropdown>
-      <mi-dropdown style="position:absolute;;margin-left: 40px">loading..</mi-dropdown>
-        
-
-
+      <div class="row">
+        <mi-dropdown style="cursor: pointer;width:20px" (openState)="openEvent($event)" >loading..</mi-dropdown>
+        <mi-dropdown style="cursor: pointer;width:20px" (openState)="openEvent($event)" >loading..</mi-dropdown>
+        <div class="row"  style="position:absolute;margin-left: 40px">
+          <a style="cursor: pointer;width:20px" (click)="onDownload(row)">
+            <i class="fa fa-search" data-toggle="tooltip" data-placement="top" title="download file."></i>
+          </a>
+          <a style="cursor: pointer;width:20px" (click)="onDownload(row)">
+            <i class="fa fa-file" data-toggle="tooltip" data-placement="top" title="download file."></i>
+          </a>
+        </div>
       </div>
     </ng-template>
   </ngx-datatable-column>
@@ -77,37 +79,35 @@
     </ng-template>
     <ng-template let-row="row" ngx-datatable-cell-template>
       <a style="cursor: pointer;" (click)="onDownload($event,op3)">
-        <i class="fa fa-download" data-toggle="tooltip" data-placement="top" title="download file."></i>
+        <i class="fa fa-user" data-toggle="tooltip" data-placement="top" title="download file."></i>
       </a>
     </ng-template>
   </ngx-datatable-column>
 
 </ngx-datatable>
-<p-overlayPanel #op3>
+<div>
+  slectOpen:{{isSelectOpen}}
+</div>
+<p-overlayPanel appendTo="body" #op3>
   <div>
-    <input #popupInput type="text" placeholder="Name" autofocus="true" >
-    <!-- <div>
-      <input type="text" placeholder="Name">
-    </div>
-    <div>
-      <input type="text" placeholder="Name">
-    </div>
-    <div>
-      <input type="text" placeholder="Name">
-    </div>
-    <div>
-      <input type="text" placeholder="Name" >
-    </div> -->
-    <ul >
-      <li> test1 </li>
-      <li> test1 </li>
-      <li> test1 </li>
-      <li> test1 </li>
-      <li> test1 </li>
-    </ul>
+    <!-- <input #popupInput type="text" placeholder="Name" autofocus="true" >     -->
 
     <!-- <ng-select #select tabindex="0" style=" overflow: visible;" [items]="status_pair" bindLabel="val" placeholder="Select city"
-      [(ngModel)]="value">
+      [(ngModel)]="value" [isOpen]="true">
     </ng-select> -->
+
+    <ngx-datatable #popupInput class="material" [rows]="status_pair" [headerHeight]="0" [footerHeight]="0" [rowHeight]="'40'"
+      [limit]="5">
+      <ngx-datatable-column style="width:25px">
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          {{row.id}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column>
+        <ng-template let-row="row" ngx-datatable-cell-template>
+          {{row.val}}
+        </ng-template>
+      </ngx-datatable-column>
+    </ngx-datatable>
   </div>
 </p-overlayPanel>

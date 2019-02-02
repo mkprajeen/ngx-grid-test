@@ -1,5 +1,6 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, Renderer } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, EventEmitter, HostListener } from '@angular/core';
 import { OverlayPanel } from 'primeng/overlaypanel';
+import { DatatableComponent } from '@swimlane/ngx-datatable';
 
 @Component({
   selector: 'app-directory-view',
@@ -10,7 +11,9 @@ export class DirectoryViewComponent implements OnInit {
   queueList: QueueCall[] = [];
   status_pair: any[] = [{ id: 1, val: 'Available' }, { id: 2, val: 'Busy' }, { id: 3, val: 'Meeting' }, { id: 4, val: 'Vacation' }];
   strArry: string[] = ["Available", "Busy", "Meeting", "Vacation"];
-  @ViewChild('#popupInput') popupInput: ElementRef;
+
+  isSelectOpen: boolean = false;
+  @ViewChild('#popupInput') popupInput: DatatableComponent;
   constructor() { }
 
   ngOnInit() {
@@ -35,8 +38,18 @@ export class DirectoryViewComponent implements OnInit {
   }
   private onDownload(event, overlaypanel: OverlayPanel) {
     overlaypanel.toggle(event);
+  }
 
+  private openEvent(event) {
+    this.isSelectOpen = event;
+  }
 
+  @HostListener('window:keyup', ['$event'])
+  keyEvent(event: KeyboardEvent) {
+    console.log(event);
+    if (event.keyCode === 80) {
+
+    }
   }
 }
 export class QueueCall {
