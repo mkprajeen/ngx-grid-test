@@ -37,7 +37,10 @@
       </li>
     </ul>
   </div>
-
+  <div>
+    <button (click)="clearList()">Clear</button>
+    <button (click)="fillQueuelist()">fill</button>
+  </div>
 </div>
 
 <!-- <div class="my-custom-cell" style="display:flex;align-items:center; justify-content:flex-start;background: blue">
@@ -58,7 +61,7 @@
 </div>
 <div>
   <div class="app-directory-view">
-    <app-directory-view class="app-directory-view">Loading</app-directory-view>
+    <app-directory-view  [queueList]="queueList" class="app-directory-view">Loading</app-directory-view>
   </div>
   <div>
     <app-ab-view>Loading</app-ab-view>

@@ -1,6 +1,8 @@
-import { Component, OnInit, ViewEncapsulation, ViewChild, ElementRef, EventEmitter, HostListener } from '@angular/core';
+import { Component, Input, OnInit, ViewEncapsulation, ViewChild, ElementRef, EventEmitter, HostListener } from '@angular/core';
 import { OverlayPanel } from 'primeng/overlaypanel';
 import { DatatableComponent } from '@swimlane/ngx-datatable';
+import { MiDropdownComponent } from './../mi-dropdown/mi-dropdown.component';
+import { GlobalState } from './../global.state';
 
 @Component({
   selector: 'app-directory-view',
@@ -8,28 +10,27 @@ import { DatatableComponent } from '@swimlane/ngx-datatable';
   styleUrls: ['./directory-view.component.scss'],
 })
 export class DirectoryViewComponent implements OnInit {
-  queueList: QueueCall[] = [];
+  @Input() queueList: any[];
   status_pair: any[] = [{ id: 1, val: 'Available' }, { id: 2, val: 'Busy' }, { id: 3, val: 'Meeting' }, { id: 4, val: 'Vacation' }];
-  strArry: string[] = ["Available", "Busy", "Meeting", "Vacation"];
+  
 
   isSelectOpen: boolean = false;
-  @ViewChild('#popupInput') popupInput: DatatableComponent;
-  constructor() { }
+  myelement: any;
+  @ViewChild(DatatableComponent) myDatatable: DatatableComponent;
+  @ViewChild('ngSelect') tpl: MiDropdownComponent;
+
+
+  constructor(private _state: GlobalState) {
+
+  }
 
   ngOnInit() {
-    this.queueList.push({ remoteCallId: '1', calledName: 'Call1', waitTime: 0, stateName: 'Queued', timestamp: 10, isRecall: false, status: this.strArry });
-    this.queueList.push({ remoteCallId: '2', calledName: 'Call2', waitTime: 0, stateName: 'Queued', timestamp: 20, isRecall: false, status: this.strArry });
-    this.queueList.push({ remoteCallId: '3', calledName: 'Call3', waitTime: 0, stateName: 'Parked', timestamp: 10, isRecall: false, status: this.strArry });
-    this.queueList.push({ remoteCallId: '4', calledName: 'Call4', waitTime: 0, stateName: 'Parked', timestamp: 20, isRecall: false, status: this.strArry });
-    this.queueList.push({ remoteCallId: '5', calledName: 'Call5', waitTime: 0, stateName: 'Recall', timestamp: 10, isRecall: true, status: this.strArry });
-    this.queueList.push({ remoteCallId: '6', calledName: 'Call6', waitTime: 0, stateName: 'Recall', timestamp: 20, isRecall: true, status: this.strArry });
-    this.queueList.push({ remoteCallId: '7', calledName: 'Call7', waitTime: 0, stateName: 'Queued', timestamp: 10, isRecall: false, status: this.strArry });
-    this.queueList.push({ remoteCallId: '8', calledName: 'Call8', waitTime: 0, stateName: 'Parked', timestamp: 10, isRecall: false, status: this.strArry });
-    this.queueList.push({ remoteCallId: '9', calledName: 'Call9', waitTime: 0, stateName: 'Recall', timestamp: 10, isRecall: true, status: this.strArry });
-    this.queueList.push({ remoteCallId: '10', calledName: 'Call10', waitTime: 0, stateName: 'Parked', timestamp: 30, isRecall: false, status: this.strArry });
-    this.queueList.push({ remoteCallId: '11', calledName: 'Call11', waitTime: 0, stateName: 'Queued', timestamp: 50, isRecall: false, status: this.strArry });
-    this.queueList.push({ remoteCallId: '12', calledName: 'Call12', waitTime: 0, stateName: 'Recall', timestamp: 50, isRecall: true, status: this.strArry });
+
   }
+
+  
+
+ 
   private getStatus(): string[] {
     return ["Available", "Busy", "Meeting", "Vacation"];
   }
@@ -44,20 +45,24 @@ export class DirectoryViewComponent implements OnInit {
     this.isSelectOpen = event;
   }
 
+  onActivate(event) {
+    console.log(event);
+    // let element = event.rowElement.getElementsByTagName('mi-dropdown');
+    // this.myelement = element[0] as HTMLElement;
+    this.myelement = event.row;
+  }
+
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
     console.log(event);
-    if (event.keyCode === 80) {
+    if (event.keyCode === 71) {
 
+      console.log('Keyboard short cut:  ' + this.myelement);
+      this._state.notifyDataChanged(this.myelement.remoteCallId, 'data');
+      // let element = this.myelement.getElementsByTagName('ng-select');
+      // console.log(element[0]);
+      // element[0].open();
     }
   }
 }
-export class QueueCall {
-  remoteCallId: string;
-  calledName: string;
-  waitTime: number;
-  stateName: string;
-  timestamp: number;
-  isRecall: boolean;
-  status: string[];
-}
+

@@ -1,5 +1,6 @@
-<ngx-datatable class="material" [rows]="queueList" [columnMode]="'force'" [headerHeight]="40" [footerHeight]="40" [rowHeight]="'60'"
-  [limit]="5">
+
+<ngx-datatable #myDatatable class="material" [rows]="queueList" [columnMode]="'force'" [headerHeight]="40" [footerHeight]="40"
+  [rowHeight]="'60'" [limit]="5" (activate)="onActivate($event)">
 
   <ngx-datatable-column>
     <ng-template let-column="column" ngx-datatable-header-template>
@@ -51,26 +52,24 @@
       </ng-select>
     </ng-template>
   </ngx-datatable-column>
-  <ngx-datatable-column name="isRecall" [cellClass]="'my-custom-cell'">
-    <ng-template ngx-datatable-cell-template let-value="value">
-      <!-- {{value}} -->
-      <!-- <ng-select style=" overflow: visible;" [items]="status_pair"
-                   bindLabel="val"
-                   placeholder="Select city"
-                   [(ngModel)]="value">
-        </ng-select> -->
-      <div class="row">
-        <mi-dropdown style="cursor: pointer;width:20px" (openState)="openEvent($event)" >loading..</mi-dropdown>
-        <mi-dropdown style="cursor: pointer;width:20px" (openState)="openEvent($event)" >loading..</mi-dropdown>
-        <div class="row"  style="position:absolute;margin-left: 40px">
-          <a style="cursor: pointer;width:20px" (click)="onDownload(row)">
+  <ngx-datatable-column>
+    <ng-template let-column="column" ngx-datatable-header-template>
+      calledName
+    </ng-template>
+    <ng-template let-row="row" ngx-datatable-cell-template>
+
+      <!-- <div class="row"> -->
+        <mi-dropdown [rowId]="row.remoteCallId" style="cursor: pointer;width:20px" (openState)="openEvent($event)">loading..</mi-dropdown>
+        <!-- <mi-dropdown style="cursor: pointer;width:20px" (openState)="openEvent($event)" >loading..</mi-dropdown> -->
+        <!-- <div class="row" style="position:absolute;margin-left: 40px"> -->
+          <!-- <a style="cursor: pointer;width:20px" (click)="onDownload(row)">
             <i class="fa fa-search" data-toggle="tooltip" data-placement="top" title="download file."></i>
           </a>
           <a style="cursor: pointer;width:20px" (click)="onDownload(row)">
             <i class="fa fa-file" data-toggle="tooltip" data-placement="top" title="download file."></i>
-          </a>
-        </div>
-      </div>
+          </a> -->
+        <!-- </div> -->
+      <!-- </div> -->
     </ng-template>
   </ngx-datatable-column>
   <ngx-datatable-column>

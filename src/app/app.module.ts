@@ -16,6 +16,7 @@ import { DirectoryViewComponent } from './directory-view/directory-view.componen
 import { MiDropdownComponent } from './mi-dropdown/mi-dropdown.component';
 import { OverlayPanelModule } from 'primeng/overlaypanel';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GlobalState } from './global.state';
 
 
 @NgModule({
@@ -35,7 +36,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FormsModule,
     OverlayPanelModule,
   ],
-  providers: [],
+  providers: [GlobalState],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
