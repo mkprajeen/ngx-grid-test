@@ -1,6 +1,6 @@
 
 <ngx-datatable #myDatatable class="material" [rows]="queueList" [columnMode]="'force'" [headerHeight]="40" [footerHeight]="40"
-  [rowHeight]="'60'" [limit]="5" (activate)="onActivate($event)">
+  [rowHeight]="'60'" [limit]="5"  (activate)="onActivate($event)" (select)="onSelect($event)">
 
   <ngx-datatable-column>
     <ng-template let-column="column" ngx-datatable-header-template>
@@ -47,8 +47,9 @@
           <button class="dropdown-item">No end time</button> 
         </div>
       </div> -->
-      <ng-select style="cursor: pointer" [items]="status_pair" bindLabel="val" appendTo="body" [clearable]="false" placeholder="Select city"
-        [(ngModel)]="value">
+      <ng-select style="cursor: pointer" [items]="status_pair" bindLabel="val" appendTo="body"
+       [clearable]="false" placeholder="Select city" [hideSelected]="true"
+       [searchable]="false"   [(ngModel)]="value">
       </ng-select>
     </ng-template>
   </ngx-datatable-column>
@@ -58,18 +59,8 @@
     </ng-template>
     <ng-template let-row="row" ngx-datatable-cell-template>
 
-      <!-- <div class="row"> -->
-        <mi-dropdown [rowId]="row.remoteCallId" style="cursor: pointer;width:20px" (openState)="openEvent($event)">loading..</mi-dropdown>
-        <!-- <mi-dropdown style="cursor: pointer;width:20px" (openState)="openEvent($event)" >loading..</mi-dropdown> -->
-        <!-- <div class="row" style="position:absolute;margin-left: 40px"> -->
-          <!-- <a style="cursor: pointer;width:20px" (click)="onDownload(row)">
-            <i class="fa fa-search" data-toggle="tooltip" data-placement="top" title="download file."></i>
-          </a>
-          <a style="cursor: pointer;width:20px" (click)="onDownload(row)">
-            <i class="fa fa-file" data-toggle="tooltip" data-placement="top" title="download file."></i>
-          </a> -->
-        <!-- </div> -->
-      <!-- </div> -->
+        <mi-dropdown [rowId]="row.remoteCallId" [itmesList]= "status_pair" style="cursor: pointer;width:20px" (openState)="openEvent($event)">loading..</mi-dropdown>
+        
     </ng-template>
   </ngx-datatable-column>
   <ngx-datatable-column>
@@ -77,9 +68,12 @@
       Download
     </ng-template>
     <ng-template let-row="row" ngx-datatable-cell-template>
-      <a style="cursor: pointer;" (click)="onDownload($event,op3)">
+      <!-- <a style="cursor: pointer;" (click)="onDownload($event,op3)">
         <i class="fa fa-user" data-toggle="tooltip" data-placement="top" title="download file."></i>
-      </a>
+      </a> -->
+      <mi-select-am-select [rowId]="row.remoteCallId" [itmesList]= "status_pair"  
+      (openState)="openEvent($event)"></mi-select-am-select>
+      
     </ng-template>
   </ngx-datatable-column>
 

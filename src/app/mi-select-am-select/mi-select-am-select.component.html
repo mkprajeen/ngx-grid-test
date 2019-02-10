@@ -1,0 +1,22 @@
+<div style="width:20px;float:left;background: red">
+  <a style="cursor: pointer;" (click)="openSelect(matSelect)">
+    <i class="fa fa-download" data-toggle="tooltip" data-placement="top" title="download file."></i>
+  </a>
+  <mat-form-field style="opacity:0;width:0px;height:0px;position: absolute;">
+    <mat-select #matSelect (openedChange)="onOpenedChange($event)" (selectionChange)="onSelectionChange($event)">
+      <mat-option style="height:30px;" *ngFor="let item of itmesList" [value]="item.val">
+        <div class="row">
+          <div class="col">{{item.id}}</div>
+          <div class="col">{{item.val}}</div>
+          <div class="col">
+            <i class="fa fa-download"></i>
+          </div>
+        </div>
+      </mat-option>
+      <mat-divider></mat-divider>
+      <mat-option>
+        divider
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  </div>

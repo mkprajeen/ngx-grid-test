@@ -1,0 +1,10 @@
+
+<button mat-icon-button [matMenuTriggerFor]="menu">
+  <mat-icon>more_vert</mat-icon>
+</button>
+<mat-menu #menu="matMenu" >
+  <button mat-menu-item *ngFor="let item of itmesList">
+      <mat-icon>dialpad</mat-icon>
+      <span>{{item.id}} - {{item.val}}</span>
+  </button>
+</mat-menu>

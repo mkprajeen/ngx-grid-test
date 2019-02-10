@@ -46,15 +46,23 @@ export class DirectoryViewComponent implements OnInit {
   }
 
   onActivate(event) {
-    console.log(event);
+    console.log('onActivate', event);
+    console.log('onActivate-p', event.type);
     // let element = event.rowElement.getElementsByTagName('mi-dropdown');
     // this.myelement = element[0] as HTMLElement;
+    if (event.type === 'keydown') {
+      console.log('keydown', event);
+    }
     this.myelement = event.row;
+  }
+
+  onSelect(event) {
+    console.log('onSelect', event);
   }
 
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    console.log(event);
+    console.log('keyup', event);
     if (event.keyCode === 71) {
 
       console.log('Keyboard short cut:  ' + this.myelement);

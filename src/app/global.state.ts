@@ -1,12 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 
-@Injectable({
-    providedIn: 'root',
-  })
+@Injectable()
 export class GlobalState {
 
-  private _data = new Subject<Object>();
+  private _data = new Subject<any>();
   private _dataStream$ = this._data.asObservable();
 
   private _subscriptions: Map<string, Array<Function>> = new Map<string, Array<Function>>();
@@ -15,16 +13,10 @@ export class GlobalState {
     this._dataStream$.subscribe((data) => this._onEvent(data));
   }
 
-  notifyDataChanged(key, value) {
-
-     const current = this._data[key];
-     if (current !== value) {
-      this._data[key] = value;
-      }
-
+  notifyDataChanged(key: string, value: any) {
       this._data.next({
         Key: key,
-        Value: this._data[key]
+        Value: value
       });
   }
 

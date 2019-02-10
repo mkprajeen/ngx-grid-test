@@ -1,0 +1,18 @@
+:host /deep/ .mat-option {
+    color: red;
+    .mat-active {
+            .fa {
+              color: red;
+            }
+            // &.ng-option-marked {
+            //     background-color: rgba(0, 0, 0, .04);
+            //     .fa {
+            //       color: black;
+            //     }
+            // }
+            // &.ng-option-selected{
+            //   background-color:rgba(0, 0, 0, .04);
+            // }
+       
+    }
+  }

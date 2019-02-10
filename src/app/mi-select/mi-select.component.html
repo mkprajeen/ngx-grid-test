@@ -1,0 +1,24 @@
+<div (mousedown)="handleMousedown($event)" [class.ng-has-value]="hasValue" class="ng-select-container">
+    <a style="cursor: pointer;" (click)="openSelect(select)">
+        <i class="fa fa-download" data-toggle="tooltip" data-placement="top" title="download file."></i>
+    </a>
+</div>
+
+<ng-dropdown-panel *ngIf="isOpen" class="ng-dropdown-panel" [virtualScroll]="virtualScroll" [appendTo]="appendTo" [position]="dropdownPosition"
+    [items]="itemsList.filteredItems" [markedItem]="itemsList.markedItem" (update)="viewPortItems = $event" (scroll)="scroll.emit($event)"
+    (scrollToEnd)="scrollToEnd.emit($event)" (outsideClick)="close()" [class.ng-select-multiple]="multiple" [ngClass]="appendTo ? classes : null"
+    [id]="dropdownId">
+    <div class="ng-option" [attr.role]="item.children ? 'group' : 'option'" (click)="toggleItem(item)" (mouseover)="onItemHover(item)"
+        *ngFor="let item of viewPortItems" [class.ng-option-disabled]="item.disabled" [class.ng-option-selected]="item.selected"
+        [class.ng-optgroup]="item.children" [class.ng-option]="!item.children" [class.ng-option-child]="!!item.parent" [class.ng-option-marked]="item === itemsList.markedItem"
+        [attr.aria-selected]="item.selected" [attr.id]="item?.htmlId">
+
+        <ng-template #defaultOptionTemplate>
+            <span class="ng-option-label">{{item.label}}</span>
+        </ng-template>
+
+        <ng-template [ngTemplateOutlet]="item.children ? (optgroupTemplate || defaultOptionTemplate) : (optionTemplate || defaultOptionTemplate)"
+            [ngTemplateOutletContext]="{ item: item.value, item$:item, index: item.index, searchTerm: filterValue }">
+        </ng-template>
+    </div>
+</ng-dropdown-panel>

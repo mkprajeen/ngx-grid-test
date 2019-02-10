@@ -9,10 +9,13 @@ import { GlobalState } from './../global.state';
 })
 export class MiDropdownComponent implements OnInit, OnDestroy {
   @Input() rowId: string;
+  @Input() itmesList: any;
   @Output() openState = new EventEmitter<any>();
   @ViewChild('select') tpl: NgSelectComponent;
+
+  private openStateFlg: boolean = false;
   
-  constructor(private _state: GlobalState) { 
+  constructor(private _state: GlobalState, private hostElement: ElementRef) { 
     
   }
 
@@ -21,27 +24,35 @@ export class MiDropdownComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this._state.subscribe(this.rowId, (user) => {
-      this.tpl.open();
+     // this.tpl.open();
     });
   }
 
-  
 
   openSelect(select: NgSelectComponent) {
-    select.open();
+    if (!this.openStateFlg) {
+      select.open();
+    } else {
+      select.close();
+    }
+    
+
   }
 
   onOpen(event) {
-    // this.openState = true;
+    this.openStateFlg = true;
     this.openState.emit(true);
     console.log('event onOpen');
     console.log(this.openState);
   }
   onClose(event) {
-    // this.openState = false;
+     this.openStateFlg = false;
     this.openState.emit(false);
     console.log('event onClose');
     console.log(this.openState);
+    
+    console.log(this.hostElement.nativeElement);
+    
   }
 
   onChange(event) {

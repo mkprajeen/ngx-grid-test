@@ -5,6 +5,7 @@
  @import "~@swimlane/ngx-datatable/release/themes/dark.css";
  @import "~@swimlane/ngx-datatable/release/assets/icons.css";
  @import "~@ng-select/ng-select/themes/default.theme.css";
+ @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
 //  .ngx-datatable {
 //     overflow: visible;
@@ -48,6 +49,28 @@
       }
   }
 }
-// .fa-download:hover  {
-//   color: turquoise;
-// }
+.mat-option {
+  .fa {
+    color: white;
+  }
+  &.mat-active :hover {
+          .fa {
+            color:black;
+          }
+  }
+  &.mat-active {
+    .fa {
+      color:black;
+    }
+  }
+  &.mat-selected {
+    .fa {
+      color:white;
+    }
+  }
+}
+.mat-option :hover{
+  .fa {
+    color:black;
+  }
+}

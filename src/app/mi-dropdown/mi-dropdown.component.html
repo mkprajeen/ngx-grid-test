@@ -24,12 +24,10 @@
   </a>
   <ng-select  style="opacity:0;width:200px"  
                   #select  
-                   [items]="status_pair"
+                   [items]="itmesList"
                    bindLabel="val"
-                   [dropdownPosition]="auto"
                    [clearable] = "false"
                    appendTo="body"
-                   [markFirst]="true"
                    [(ngModel)]="value"
                    (open)="onOpen($event)"
                    (close)="onClose($event)"
