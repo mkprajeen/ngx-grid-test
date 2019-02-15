@@ -24,18 +24,19 @@ export class MiDropdownComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this._state.subscribe(this.rowId, (user) => {
-     // this.tpl.open();
+      this.tpl.open();
     });
   }
 
 
-  openSelect(select: NgSelectComponent) {
+  openSelect(select: NgSelectComponent, event) {
+    event.preventDefault();
     if (!this.openStateFlg) {
       select.open();
     } else {
       select.close();
     }
-    
+   
 
   }
 

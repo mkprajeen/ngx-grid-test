@@ -1,6 +1,6 @@
 
 <ngx-datatable #myDatatable class="material" [rows]="queueList" [columnMode]="'force'" [headerHeight]="40" [footerHeight]="40"
-  [rowHeight]="'60'" [limit]="5"  (activate)="onActivate($event)" (select)="onSelect($event)">
+  [rowHeight]="'60'" [limit]="5"   (activate)="onActivate($event)" (select)="onSelect($event)">
 
   <ngx-datatable-column>
     <ng-template let-column="column" ngx-datatable-header-template>
@@ -34,19 +34,6 @@
       stateName
     </ng-template>
     <ng-template let-row="row" ngx-datatable-cell-template>
-      <!-- {{row.stateName}} -->
-      <!-- <div class="btn-group">
-        <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">{{row.stateName}}</button>
-        <div class="dropdown-menu" role="menu">
-          <div *ngFor="let item of getStatus1()">
-            <button class="dropdown-item">{{ item.id }}-{{ item.val }}</button>
-          </div>
-          <div class="dropdown-divider"></div>
-          <button class="dropdown-item">Custom activity...</button>
-          <button class="dropdown-item">Future presence...</button>
-          <button class="dropdown-item">No end time</button> 
-        </div>
-      </div> -->
       <ng-select style="cursor: pointer" [items]="status_pair" bindLabel="val" appendTo="body"
        [clearable]="false" placeholder="Select city" [hideSelected]="true"
        [searchable]="false"   [(ngModel)]="value">
@@ -59,7 +46,8 @@
     </ng-template>
     <ng-template let-row="row" ngx-datatable-cell-template>
 
-        <mi-dropdown [rowId]="row.remoteCallId" [itmesList]= "status_pair" style="cursor: pointer;width:20px" (openState)="openEvent($event)">loading..</mi-dropdown>
+        <mi-dropdown [rowId]="row.remoteCallId" [itmesList]= "status_pair" style="cursor: pointer;width:20px" 
+        (openState)="openEvent($event)">loading..</mi-dropdown>
         
     </ng-template>
   </ngx-datatable-column>
@@ -83,12 +71,6 @@
 </div>
 <p-overlayPanel appendTo="body" #op3>
   <div>
-    <!-- <input #popupInput type="text" placeholder="Name" autofocus="true" >     -->
-
-    <!-- <ng-select #select tabindex="0" style=" overflow: visible;" [items]="status_pair" bindLabel="val" placeholder="Select city"
-      [(ngModel)]="value" [isOpen]="true">
-    </ng-select> -->
-
     <ngx-datatable #popupInput class="material" [rows]="status_pair" [headerHeight]="0" [footerHeight]="0" [rowHeight]="'40'"
       [limit]="5">
       <ngx-datatable-column style="width:25px">

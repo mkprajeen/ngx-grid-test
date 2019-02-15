@@ -11,7 +11,7 @@ import { GlobalState } from './../global.state';
 })
 export class DirectoryViewComponent implements OnInit {
   @Input() queueList: any[];
-  status_pair: any[] = [{ id: 1, val: 'Available' }, { id: 2, val: 'Busy' }, { id: 3, val: 'Meeting' }, { id: 4, val: 'Vacation' }];
+  status_pair: any[] = [{ id: 1, val: 'Available',disabled:false }, { id: 2, val: 'Busy',disabled:false }, { id: 3, val: 'Meeting',disabled:false }, { id: 4, val: 'Vacation',disabled:false }, { id: 0, val: '---' ,disabled:true},{ id: 5, val: 'C- Activity',disabled:false }];
   
 
   isSelectOpen: boolean = false;
@@ -46,12 +46,11 @@ export class DirectoryViewComponent implements OnInit {
   }
 
   onActivate(event) {
-    console.log('onActivate', event);
-    console.log('onActivate-p', event.type);
+    // console.log('onActivate', event);
     // let element = event.rowElement.getElementsByTagName('mi-dropdown');
     // this.myelement = element[0] as HTMLElement;
     if (event.type === 'keydown') {
-      console.log('keydown', event);
+      // console.log('keydown', event);
     }
     this.myelement = event.row;
   }
@@ -62,14 +61,15 @@ export class DirectoryViewComponent implements OnInit {
 
   @HostListener('window:keyup', ['$event'])
   keyEvent(event: KeyboardEvent) {
-    console.log('keyup', event);
+    // console.log('keyup', event);
     if (event.keyCode === 71) {
 
       console.log('Keyboard short cut:  ' + this.myelement);
-      this._state.notifyDataChanged(this.myelement.remoteCallId, 'data');
-      // let element = this.myelement.getElementsByTagName('ng-select');
-      // console.log(element[0]);
-      // element[0].open();
+       this._state.notifyDataChanged(this.myelement.remoteCallId, 'data');
+      // const transferPopupIconElement = document.getElementById('selectTransfer_' + this.myelement.remoteCallId) as HTMLInputElement;
+      // if (transferPopupIconElement) {
+      //   transferPopupIconElement.click();
+      // }
     }
   }
 }

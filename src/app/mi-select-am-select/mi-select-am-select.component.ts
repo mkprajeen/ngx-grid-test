@@ -20,7 +20,7 @@ export class MiSelectAmSelectComponent implements OnInit, OnDestroy {
 
   ngOnInit() {
     this._state.subscribe(this.rowId, (user) => {
-      this.openSelect(this.matSelect);
+     // this.openSelect(this.matSelect);
     });
   }
 

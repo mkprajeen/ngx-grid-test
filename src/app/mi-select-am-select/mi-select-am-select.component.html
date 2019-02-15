@@ -1,4 +1,4 @@
-<div style="width:20px;float:left;background: red">
+<div style="width:20px;float:left;">
   <a style="cursor: pointer;" (click)="openSelect(matSelect)">
     <i class="fa fa-download" data-toggle="tooltip" data-placement="top" title="download file."></i>
   </a>
@@ -14,8 +14,14 @@
         </div>
       </mat-option>
       <mat-divider></mat-divider>
-      <mat-option>
-        divider
+      <mat-option style="height:30px;">
+        test-0
+      </mat-option>
+      <mat-option style="height:30px;">
+        test-1
+      </mat-option>
+      <mat-option style="height:30px;">
+        test-2
       </mat-option>
     </mat-select>
   </mat-form-field>

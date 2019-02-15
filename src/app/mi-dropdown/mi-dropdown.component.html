@@ -19,7 +19,7 @@
 </div> -->
 
 <div>
-  <a style="cursor: pointer;" (click)= "openSelect(select)">
+  <a id="selectTransfer_{{rowId}}" style="cursor: pointer;" (contextmenu)= "openSelect(select, $event)">
     <i class="fa fa-download" data-toggle="tooltip" data-placement="top" title="download file."></i>
   </a>
   <ng-select  style="opacity:0;width:200px"  
@@ -28,16 +28,20 @@
                    bindLabel="val"
                    [clearable] = "false"
                    appendTo="body"
+                   disa
                    [(ngModel)]="value"
                    (open)="onOpen($event)"
                    (close)="onClose($event)"
                    (change)="onChange($event)">
                    <ng-template  ng-option-tmp let-item="item">
-                     <div class="row">
-                     <div class="col">{{item.id}}</div> 
-                     <div class="col">{{item.val}}</div> 
-                     <div class="col"><i class="fa fa-download" ></i></div>   
-                    </div>                  
+                     <div *ngIf="item.id>0" class="row" style="height:25px;">
+                      <div class="col">{{item.id}}</div> 
+                      <div class="col">{{item.val}}</div> 
+                      <div class="col"><i class="fa fa-download" ></i></div>   
+                    </div>   
+                    <div *ngIf="item.id==0"  class="ng-option disabled" >
+                        <hr >
+                    </div>               
                   </ng-template>
   </ng-select>
 </div>
